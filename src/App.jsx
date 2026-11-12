@@ -149,6 +149,11 @@ const LOCATIONS = [
     address: 'Av. Winston Churchill esq. Paseo de los Locutores',
     type: 'Mega Gimnasio Biomecánico',
     photo: './media/post_5.jpg',
+    gallery: [
+      { url: './media/post_5.jpg', tag: 'Fachada & Acceso Principal' },
+      { url: './media/post_3.jpg', tag: 'Área de Musculación Churchill' },
+      { url: './media/post_1.jpg', tag: 'Zona de Alto Desempeño' }
+    ],
     specs: '3 Niveles · Área Funcional · Parking Subterráneo'
   },
   {
@@ -157,6 +162,11 @@ const LOCATIONS = [
     address: 'Calle Graciela Guanahani, Ensanche Naco',
     type: 'Instalación de Alto Rendimiento',
     photo: './media/post_6.jpg',
+    gallery: [
+      { url: './media/post_6.jpg', tag: 'Entorno Urbano Naco' },
+      { url: './media/post_12.jpg', tag: 'Circuito de Pesos Libres' },
+      { url: './media/post_2.jpg', tag: 'Estación de Calistenia' }
+    ],
     specs: 'Zona de Pesos Libres · Estudio de Clases · Lockers Pro'
   },
   {
@@ -165,7 +175,25 @@ const LOCATIONS = [
     address: 'Av. Núñez de Cáceres esq. Rómulo Betancourt',
     type: 'Centro Fitness Premium',
     photo: './media/post_7.jpg',
+    gallery: [
+      { url: './media/post_7.jpg', tag: 'Complejo Downtown Center' },
+      { url: './media/post_11.jpg', tag: 'Línea Cardiovascular Pro' },
+      { url: './media/post_8.jpg', tag: 'Parque de Ergómetros' }
+    ],
     specs: 'Parque Cardio Extendido · Rigs Funcionales · Climatizado'
+  },
+  {
+    name: 'Sede Sambil',
+    zone: 'Distrito Nacional',
+    address: 'Av. John F. Kennedy esq. Paseo Los Aviadores, Centro Comercial Sambil',
+    type: 'Circuito Cardiovascular & Fuerza',
+    photo: './media/post_8.jpg',
+    gallery: [
+      { url: './media/post_8.jpg', tag: 'Zona Cardio Sambil' },
+      { url: './media/post_11.jpg', tag: 'Cintas con Amortiguación' },
+      { url: './media/post_3.jpg', tag: 'Estaciones Guiadas' }
+    ],
+    specs: 'Ergómetros de Telemetría · Conectividad Metro · Climatizado 21°C'
   },
   {
     name: 'Sede La Esperilla',
@@ -173,7 +201,12 @@ const LOCATIONS = [
     address: 'Av. México esq. Pedro Henríquez Ureña',
     type: 'Sede Urbana Integral',
     photo: './media/post_9.jpg',
-    specs: 'Circuito Isocinético · Duchas Calientes · Seguridad 24/7'
+    gallery: [
+      { url: './media/post_9.jpg', tag: 'Instalaciones La Esperilla' },
+      { url: './media/post_4.jpg', tag: 'Salón de Ritmos & Clases' },
+      { url: './media/post_2.jpg', tag: 'Smart Box Funcional' }
+    ],
+    specs: 'Circuito Isocinético · Salón de Clases · Duchas y Lockers'
   },
   {
     name: 'Sede Plaza Lama 27',
@@ -181,6 +214,11 @@ const LOCATIONS = [
     address: 'Av. 27 de Febrero esq. Winston Churchill',
     type: 'Sede Estratégica Central',
     photo: './media/post_10.jpg',
+    gallery: [
+      { url: './media/post_10.jpg', tag: 'Acceso Plaza Lama 27' },
+      { url: './media/post_12.jpg', tag: 'Mancuernas de Uretano' },
+      { url: './media/post_5.jpg', tag: 'Arquitectura Técnica' }
+    ],
     specs: 'Acceso Directo Vía Principal · Zona HIIT · Vestuarios'
   }
 ];
@@ -213,7 +251,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0A0B0E] text-white selection:bg-[#FF1923] selection:text-white">
+    <div className="min-h-screen bg-[#0A0B0E] text-white selection:bg-[#FFC700] selection:text-[#0A0B0E]">
       {/* 1. TOP MINIMALIST NAVIGATION */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#0A0B0E]/85 backdrop-blur-md border-b border-white/10 transition-all duration-300">
         <div className="container-fluid flex items-center justify-between h-20">
@@ -221,10 +259,10 @@ export default function App() {
             <img
               src={BRAND.logo}
               alt={BRAND.name}
-              className="w-9 h-9 object-cover border border-white/20 group-hover:border-[#FF1923] transition-colors"
+              className="w-9 h-9 object-cover border border-white/20 group-hover:border-[#FFC700] transition-colors"
             />
             <div className="flex flex-col">
-              <span className="font-display font-black tracking-tight text-lg text-white group-hover:text-[#FF1923] transition-colors uppercase">
+              <span className="font-display font-black tracking-tight text-lg text-white group-hover:text-[#FFC700] transition-colors uppercase">
                 {BRAND.name}
               </span>
               <span className="font-mono text-[10px] text-white/50 tracking-widest uppercase">
@@ -252,7 +290,7 @@ export default function App() {
             href={BRAND.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-[#FF1923] hover:bg-[#D90F18] text-white text-xs font-semibold px-4 py-2.5 transition-all duration-200 tracking-wider uppercase font-mono"
+            className="flex items-center gap-2 bg-[#FFC700] hover:bg-[#E5B200] text-[#0A0B0E] text-xs font-semibold px-4 py-2.5 transition-all duration-200 tracking-wider uppercase font-mono"
           >
             <Instagram size={14} />
             <span>Únete en IG</span>
@@ -276,8 +314,8 @@ export default function App() {
 
           <div className="container-fluid relative z-10 w-full">
             <div className="max-w-5xl mb-8">
-              <div className="inline-flex items-center gap-3 font-mono text-xs tracking-[0.2em] text-[#FFD200] uppercase mb-4">
-                <span className="w-2 h-2 bg-[#FF1923]" />
+              <div className="inline-flex items-center gap-3 font-mono text-xs tracking-[0.2em] text-[#FFC700] uppercase mb-4">
+                <span className="w-2 h-2 bg-[#FFC700]" />
                 <span>SANTO DOMINGO · {BRAND.coordinates}</span>
               </div>
 
@@ -294,7 +332,7 @@ export default function App() {
                   href={BRAND.instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 bg-[#FF1923] hover:bg-[#D90F18] text-white px-7 py-4 font-mono text-xs font-bold uppercase tracking-widest transition-all duration-200"
+                  className="inline-flex items-center gap-3 bg-[#FFC700] hover:bg-[#E5B200] text-[#0A0B0E] px-7 py-4 font-mono text-xs font-bold uppercase tracking-widest transition-all duration-200"
                 >
                   <span>Inscríbete en {BRAND.name}</span>
                   <ArrowRight size={16} />
@@ -331,7 +369,7 @@ export default function App() {
             {/* Editorial Section Header */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pb-16 border-b border-black/10">
               <div className="lg:col-span-8">
-                <span className="font-mono text-xs tracking-[0.2em] text-[#FF1923] uppercase font-bold">
+                <span className="font-mono text-xs tracking-[0.2em] text-[#FFC700] uppercase font-bold">
                   01 // CAPACIDADES DEL SISTEMA
                 </span>
                 <h2 className="font-display font-black text-3xl sm:text-5xl md:text-6xl tracking-tight text-[#111215] uppercase mt-2">
@@ -375,7 +413,7 @@ export default function App() {
                   <div className="pt-6 border-t border-black/5 mt-auto">
                     <a
                       href={`#/servicios/${service.slug}`}
-                      className="inline-flex items-center gap-2 font-mono text-xs font-bold text-[#FF1923] group-hover:text-[#D90F18] uppercase tracking-wider transition-colors"
+                      className="inline-flex items-center gap-2 font-mono text-xs font-bold text-[#FFC700] group-hover:text-[#E5B200] uppercase tracking-wider transition-colors"
                     >
                       <span>Conocer más</span>
                       <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform" />
@@ -392,7 +430,7 @@ export default function App() {
           <div className="container-fluid">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16">
               <div className="lg:col-span-8">
-                <span className="font-mono text-xs tracking-[0.2em] text-[#FFD200] uppercase font-bold">
+                <span className="font-mono text-xs tracking-[0.2em] text-[#FFC700] uppercase font-bold">
                   02 // MODULACIÓN & ARQUITECTURA ESPACIAL
                 </span>
                 <h2 className="font-display font-black text-3xl sm:text-5xl md:text-6xl tracking-tight text-white uppercase mt-2">
@@ -412,7 +450,7 @@ export default function App() {
             {/* Architecture Metrics Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 font-mono text-xs">
               <div className="p-6 border border-white/10 bg-[#121419]/50">
-                <span className="text-[#FF1923] text-sm font-bold block mb-1">01 / CAPACIDAD</span>
+                <span className="text-[#FFC700] text-sm font-bold block mb-1">01 / CAPACIDAD</span>
                 <p className="text-white text-base font-bold font-display uppercase mb-2">120 KG/M² EN PISO</p>
                 <p className="text-white/50 text-[11px] leading-relaxed">
                   Refuerzo estructural anti-impacto en zonas de levantamiento pesado y peso muerto.
@@ -420,7 +458,7 @@ export default function App() {
               </div>
 
               <div className="p-6 border border-white/10 bg-[#121419]/50">
-                <span className="text-[#FF1923] text-sm font-bold block mb-1">02 / ERGONOMÍA</span>
+                <span className="text-[#FFC700] text-sm font-bold block mb-1">02 / ERGONOMÍA</span>
                 <p className="text-white text-base font-bold font-display uppercase mb-2">1.20 M RADIO DE GIRO</p>
                 <p className="text-white/50 text-[11px] leading-relaxed">
                   Pasillos amplios que previenen aglomeraciones e interferencias entre series.
@@ -428,7 +466,7 @@ export default function App() {
               </div>
 
               <div className="p-6 border border-white/10 bg-[#121419]/50">
-                <span className="text-[#FF1923] text-sm font-bold block mb-1">03 / CLIMATIZACIÓN</span>
+                <span className="text-[#FFC700] text-sm font-bold block mb-1">03 / CLIMATIZACIÓN</span>
                 <p className="text-white text-base font-bold font-display uppercase mb-2">21°C REGULADOS</p>
                 <p className="text-white/50 text-[11px] leading-relaxed">
                   Renovación constante de aire presurizado con filtración industrial activa.
@@ -436,7 +474,7 @@ export default function App() {
               </div>
 
               <div className="p-6 border border-white/10 bg-[#121419]/50">
-                <span className="text-[#FF1923] text-sm font-bold block mb-1">04 / ABSORCIÓN</span>
+                <span className="text-[#FFC700] text-sm font-bold block mb-1">04 / ABSORCIÓN</span>
                 <p className="text-white text-base font-bold font-display uppercase mb-2">25 MM VULCANIZADO</p>
                 <p className="text-white/50 text-[11px] leading-relaxed">
                   Superficie de absorción acústica y desacople de vibraciones mecánicas.
@@ -451,7 +489,7 @@ export default function App() {
           <div className="container-fluid">
             <div className="flex flex-col md:flex-row md:items-end justify-between pb-12 border-b border-white/10 gap-6">
               <div>
-                <span className="font-mono text-xs tracking-[0.2em] text-[#FF1923] uppercase font-bold">
+                <span className="font-mono text-xs tracking-[0.2em] text-[#FFC700] uppercase font-bold">
                   03 // PRESENCIA METROPOLITANA
                 </span>
                 <h2 className="font-display font-black text-3xl sm:text-5xl md:text-6xl tracking-tight text-white uppercase mt-2">
@@ -474,19 +512,42 @@ export default function App() {
                       alt={LOCATIONS[activeLocation].name}
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute top-4 left-4 bg-[#0A0B0E]/90 px-3 py-1 font-mono text-[11px] text-[#FFD200] border border-white/20">
+                    <div className="absolute top-4 left-4 bg-[#0A0B0E]/90 px-3 py-1 font-mono text-[11px] text-[#FFC700] border border-white/20">
                       {LOCATIONS[activeLocation].zone}
                     </div>
                   </div>
 
-                  <span className="font-mono text-xs text-[#FF1923] font-bold uppercase tracking-wider">
+                  {/* Fotos específicas de la sede seleccionada */}
+                  <div className="mb-6">
+                    <div className="grid grid-cols-3 gap-3">
+                      {LOCATIONS[activeLocation].gallery.map((item, gIdx) => (
+                        <div
+                          key={gIdx}
+                          className="group relative aspect-[4/3] overflow-hidden border border-white/15 bg-[#121419]"
+                        >
+                          <img
+                            src={item.url}
+                            alt={`${LOCATIONS[activeLocation].name} - ${item.tag}`}
+                            className="w-full h-full object-cover grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-2">
+                            <span className="font-mono text-[9px] sm:text-[10px] text-white/90 truncate uppercase leading-tight font-medium">
+                              {item.tag}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <span className="font-mono text-xs text-[#FFC700] font-bold uppercase tracking-wider">
                     {LOCATIONS[activeLocation].type}
                   </span>
                   <h3 className="font-display font-black text-2xl sm:text-3xl text-white uppercase mt-1 mb-2">
                     {LOCATIONS[activeLocation].name}
                   </h3>
                   <div className="flex items-center gap-2 text-white/70 text-sm mb-4">
-                    <MapPin size={16} className="text-[#FF1923] shrink-0" />
+                    <MapPin size={16} className="text-[#FFC700] shrink-0" />
                     <span>{LOCATIONS[activeLocation].address}</span>
                   </div>
                   <div className="font-mono text-xs text-white/50 border-t border-white/10 pt-4">
@@ -499,7 +560,7 @@ export default function App() {
                     href={BRAND.instagramUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs font-mono font-bold text-[#FF1923] hover:text-[#D90F18] uppercase tracking-wider"
+                    className="inline-flex items-center gap-2 text-xs font-mono font-bold text-[#FFC700] hover:text-[#E5B200] uppercase tracking-wider"
                   >
                     <span>Consultar planes para esta sede</span>
                     <ArrowRight size={14} />
@@ -515,7 +576,7 @@ export default function App() {
                     type="button"
                     onClick={() => setActiveLocation(idx)}
                     className={`text-left p-6 transition-all duration-200 flex items-center justify-between ${
-                      activeLocation === idx ? 'bg-white/10 border-l-4 border-l-[#FF1923]' : 'hover:bg-white/5'
+                      activeLocation === idx ? 'bg-white/10 border-l-4 border-l-[#FFC700]' : 'hover:bg-white/5'
                     }`}
                   >
                     <div>
@@ -531,7 +592,7 @@ export default function App() {
                     </div>
                     <ArrowRight
                       size={18}
-                      className={`text-[#FF1923] transition-transform ${
+                      className={`text-[#FFC700] transition-transform ${
                         activeLocation === idx ? 'translate-x-1 opacity-100' : 'opacity-30'
                       }`}
                     />
@@ -547,7 +608,7 @@ export default function App() {
           <div className="container-fluid">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-7">
-                <span className="font-mono text-xs tracking-[0.2em] text-[#FF1923] uppercase font-bold">
+                <span className="font-mono text-xs tracking-[0.2em] text-[#FFC700] uppercase font-bold">
                   04 // MANIFIESTO OPERATIVO
                 </span>
 
@@ -561,15 +622,15 @@ export default function App() {
 
                 <div className="space-y-4 border-t border-black/10 pt-8 font-mono text-xs">
                   <div className="flex items-start gap-3">
-                    <span className="text-[#FF1923] font-bold">01.</span>
+                    <span className="text-[#FFC700] font-bold">01.</span>
                     <span className="text-[#111215]">Biomecánica certificada sin improvisaciones técnicas.</span>
                   </div>
                   <div className="flex items-start gap-3">
-                    <span className="text-[#FF1923] font-bold">02.</span>
+                    <span className="text-[#FFC700] font-bold">02.</span>
                     <span className="text-[#111215]">Ambiente seguro y motivador para cualquier nivel físico.</span>
                   </div>
                   <div className="flex items-start gap-3">
-                    <span className="text-[#FF1923] font-bold">03.</span>
+                    <span className="text-[#FFC700] font-bold">03.</span>
                     <span className="text-[#111215]">Acceso unificado a múltiples sedes de la capital con tu plan.</span>
                   </div>
                 </div>
@@ -584,7 +645,7 @@ export default function App() {
                   />
                   <div className="p-4 font-mono text-[11px] text-[#5E6068] flex justify-between items-center">
                     <span>SANTO DOMINGO ESTUDIO</span>
-                    <span className="text-[#FF1923] font-bold">ALTO RENDIMIENTO</span>
+                    <span className="text-[#FFC700] font-bold">ALTO RENDIMIENTO</span>
                   </div>
                 </div>
               </div>
@@ -595,7 +656,7 @@ export default function App() {
         {/* SECTION 6: CIERRE MONOLÍTICO & CONVERSIÓN DIRECTA */}
         <section id="contacto" className="bg-[#0A0B0E] text-white py-24 sm:py-32 relative overflow-hidden">
           <div className="container-fluid relative z-10 text-center max-w-4xl mx-auto">
-            <span className="font-mono text-xs tracking-[0.25em] text-[#FFD200] uppercase font-bold block mb-4">
+            <span className="font-mono text-xs tracking-[0.25em] text-[#FFC700] uppercase font-bold block mb-4">
               COMIENZA HOY · SANTO DOMINGO
             </span>
 
@@ -612,7 +673,7 @@ export default function App() {
                 href={BRAND.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-[#FF1923] hover:bg-[#D90F18] text-white px-8 py-5 font-mono text-xs font-bold uppercase tracking-widest transition-all duration-200"
+                className="inline-flex items-center gap-3 bg-[#FFC700] hover:bg-[#E5B200] text-[#0A0B0E] px-8 py-5 font-mono text-xs font-bold uppercase tracking-widest transition-all duration-200"
               >
                 <Instagram size={18} />
                 <span>Escríbenos a {BRAND.handle}</span>
@@ -652,7 +713,7 @@ export default function App() {
 // DEDICATED MULTI-PAGE SERVICE DETAIL VIEW
 function ServiceDetailView({ service }) {
   return (
-    <div className="min-h-screen bg-[#0A0B0E] text-white selection:bg-[#FF1923] selection:text-white">
+    <div className="min-h-screen bg-[#0A0B0E] text-white selection:bg-[#FFC700] selection:text-[#0A0B0E]">
       {/* Top Sticky Navigation */}
       <header className="sticky top-0 z-50 bg-[#0A0B0E]/90 backdrop-blur-md border-b border-white/10">
         <div className="container-fluid flex items-center justify-between h-20">
@@ -660,11 +721,11 @@ function ServiceDetailView({ service }) {
             href="#/"
             className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider text-white/80 hover:text-white transition-colors"
           >
-            <ArrowLeft size={16} className="text-[#FF1923]" />
+            <ArrowLeft size={16} className="text-[#FFC700]" />
             <span>Volver al inicio</span>
           </a>
 
-          <div className="font-mono text-xs text-[#FFD200] hidden sm:block">
+          <div className="font-mono text-xs text-[#FFC700] hidden sm:block">
             {service.code} — {service.kicker}
           </div>
 
@@ -672,7 +733,7 @@ function ServiceDetailView({ service }) {
             href={BRAND.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#FF1923] hover:bg-[#D90F18] text-white text-xs font-mono font-bold px-4 py-2 transition-colors uppercase"
+            className="inline-flex items-center gap-2 bg-[#FFC700] hover:bg-[#E5B200] text-[#0A0B0E] text-xs font-mono font-bold px-4 py-2 transition-colors uppercase"
           >
             <Instagram size={14} />
             <span>Consultar</span>
@@ -684,7 +745,7 @@ function ServiceDetailView({ service }) {
         <div className="container-fluid max-w-5xl">
           {/* Service Header */}
           <div className="mb-12 border-b border-white/10 pb-12">
-            <span className="font-mono text-xs text-[#FF1923] tracking-[0.2em] uppercase font-bold block mb-2">
+            <span className="font-mono text-xs text-[#FFC700] tracking-[0.2em] uppercase font-bold block mb-2">
               DISCIPLINA TÉCNICA · {service.number}
             </span>
             <h1 className="font-display font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-tight text-white mb-6">
@@ -706,7 +767,7 @@ function ServiceDetailView({ service }) {
                 />
                 <div className="pt-3 font-mono text-[11px] text-white/50 flex justify-between">
                   <span>EQUIPAMIENTO OFICIAL</span>
-                  <span className="text-[#FFD200]">SANTO DOMINGO</span>
+                  <span className="text-[#FFC700]">SANTO DOMINGO</span>
                 </div>
               </div>
             ))}
@@ -714,7 +775,7 @@ function ServiceDetailView({ service }) {
 
           {/* Problem & Solution Callout */}
           <div className="p-8 border border-white/15 bg-[#121419] my-12">
-            <span className="font-mono text-xs text-[#FFD200] uppercase tracking-wider block mb-2">
+            <span className="font-mono text-xs text-[#FFC700] uppercase tracking-wider block mb-2">
               PROPÓSITO & RIGOR
             </span>
             <p className="font-display text-2xl font-bold text-white uppercase mb-2">
@@ -727,7 +788,7 @@ function ServiceDetailView({ service }) {
 
           {/* Technical Specifications Table */}
           <div className="my-16">
-            <h3 className="font-mono text-xs text-[#FF1923] uppercase tracking-[0.2em] font-bold mb-6">
+            <h3 className="font-mono text-xs text-[#FFC700] uppercase tracking-[0.2em] font-bold mb-6">
               ESPECIFICACIONES TÉCNICAS
             </h3>
             <div className="divide-y divide-white/10 border-y border-white/10 font-mono text-sm">
@@ -746,13 +807,13 @@ function ServiceDetailView({ service }) {
 
           {/* Key Advantages */}
           <div className="my-16">
-            <h3 className="font-mono text-xs text-[#FF1923] uppercase tracking-[0.2em] font-bold mb-8">
+            <h3 className="font-mono text-xs text-[#FFC700] uppercase tracking-[0.2em] font-bold mb-8">
               BENEFICIOS COMPROBADOS
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {service.features.map((feat, idx) => (
                 <div key={idx} className="p-6 border border-white/10 bg-[#121419]">
-                  <div className="w-8 h-8 flex items-center justify-center bg-[#FF1923]/10 text-[#FF1923] font-mono text-xs font-bold mb-4">
+                  <div className="w-8 h-8 flex items-center justify-center bg-[#FFC700]/10 text-[#FFC700] font-mono text-xs font-bold mb-4">
                     0{idx + 1}
                   </div>
                   <h4 className="font-display font-bold text-lg text-white uppercase mb-2">
@@ -788,7 +849,7 @@ function ServiceDetailView({ service }) {
                 href={BRAND.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#FF1923] hover:bg-[#D90F18] text-white px-6 py-3.5 font-mono text-xs font-bold uppercase tracking-wider transition-colors"
+                className="inline-flex items-center gap-2 bg-[#FFC700] hover:bg-[#E5B200] text-[#0A0B0E] px-6 py-3.5 font-mono text-xs font-bold uppercase tracking-wider transition-colors"
               >
                 <span>Inscribirme vía Instagram</span>
                 <ArrowRight size={14} />

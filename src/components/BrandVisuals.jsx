@@ -5,9 +5,9 @@ const BRAND_CONFIG = {
   "initial": "S",
   "schematicType": "structural-blueprint",
   "strokeWidth": 2,
-  "accentHex": "#FF0000",
-  "goldHex": "#FFD700",
-  "bgDarkHex": "#1A1A1A",
+  "accentHex": "#FFC700",
+  "goldHex": "#FFC700",
+  "bgDarkHex": "#0A0B0E",
   "textLightHex": "#FFFFFF",
   "geometryStyle": "geometric-block",
   "cornerRadius": "0px",
@@ -34,10 +34,10 @@ const BRAND_CONFIG = {
  * Detecta inteligentemente la industria y el servicio real para dibujar un símbolo auténtico.
  */
 export function BespokeServiceIcon({ index = 0, name = '', title = '', category = '', size = 44, className = '' }) {
-  const sw = BRAND_CONFIG.strokeWidth || 1.5;
-  const stroke = BRAND_CONFIG.accentHex;
-  const secondary = BRAND_CONFIG.goldHex;
-  const rx = BRAND_CONFIG.cornerRadius === '999px' ? 22 : BRAND_CONFIG.cornerRadius === '0px' ? 4 : 10;
+  const sw = BRAND_CONFIG.strokeWidth || 2;
+  const stroke = '#0A0A0B';
+  const secondary = BRAND_CONFIG.accentHex;
+  const rx = 0;
   
   const ctx = `${title} ${name} ${category}`.toLowerCase();
   const isDental = BRAND_CONFIG.schematicType === 'dental-3d-anatomy' || /ortodon|invisalign|dental|sonrisa|diente|limpieza|aquacare|est[eé]tica|carilla|pediatr|implante/i.test(ctx);
@@ -52,18 +52,18 @@ export function BespokeServiceIcon({ index = 0, name = '', title = '', category 
       className={className}
       style={{ flexShrink: 0 }}
     >
-      {/* Marco sutil con esquinas redondeadas amigables */}
+      {/* Marco geométrico en negro y amarillo de alto contraste */}
       <rect
         x="2"
         y="2"
         width="44"
         height="44"
         rx={rx}
-        stroke={stroke}
-        strokeOpacity="0.22"
+        stroke="#0A0B0E"
+        strokeOpacity="0.18"
         strokeWidth={sw}
-        fill={stroke}
-        fillOpacity="0.04"
+        fill="#FFC700"
+        fillOpacity="0.16"
       />
 
       {isDental ? (
@@ -446,9 +446,9 @@ export function TechnicalSchematic({ className = '', darkOverride = null }) {
     <div
       className={`relative overflow-hidden border ${className}`}
       style={{
-        backgroundColor: darkOverride !== false ? '#0D0E11' : '#F4F3EF',
-        borderColor: 'rgba(200, 164, 100, 0.25)',
-        color: '#F5F3EE',
+        backgroundColor: darkOverride !== false ? '#0A0A0B' : '#F4F4F5',
+        borderColor: 'rgba(255, 184, 0, 0.3)',
+        color: '#FFFFFF',
         padding: 'clamp(1.25rem, 3vw, 2.25rem)'
       }}
     >
@@ -462,7 +462,7 @@ export function TechnicalSchematic({ className = '', darkOverride = null }) {
           gap: '1rem',
           paddingBottom: '1rem',
           marginBottom: '1.25rem',
-          borderBottom: '1px solid rgba(245, 243, 238, 0.12)'
+          borderBottom: '1px solid rgba(255, 255, 255, 0.12)'
         }}
       >
         <div>
@@ -472,12 +472,13 @@ export function TechnicalSchematic({ className = '', darkOverride = null }) {
               fontSize: '0.72rem',
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              color: gold
+              color: gold,
+              fontWeight: 700
             }}
           >
             {layers[activeLayer]?.code} — {BRAND_CONFIG.businessName}
           </div>
-          <h4 style={{ fontSize: 'clamp(1.1rem, 2vw, 1.45rem)', fontWeight: 500, margin: '0.2rem 0 0', color: '#F5F3EE' }}>
+          <h4 style={{ fontSize: 'clamp(1.1rem, 2vw, 1.45rem)', fontWeight: 700, margin: '0.2rem 0 0', color: '#FFFFFF' }}>
             {BRAND_CONFIG.title}
           </h4>
         </div>
@@ -490,11 +491,12 @@ export function TechnicalSchematic({ className = '', darkOverride = null }) {
               type="button"
               onClick={() => setActiveLayer(idx)}
               style={{
-                background: activeLayer === idx ? accent : 'transparent',
-                color: activeLayer === idx ? '#0D0E11' : 'rgba(245,243,238,0.75)',
-                border: `1px solid ${activeLayer === idx ? accent : 'rgba(245,243,238,0.2)'}`,
+                background: activeLayer === idx ? accent : '#18181B',
+                color: activeLayer === idx ? '#0A0A0B' : '#E4E4E7',
+                border: `1px solid ${activeLayer === idx ? accent : 'rgba(255,255,255,0.2)'}`,
                 padding: '0.38rem 0.75rem',
                 fontSize: '0.7rem',
+                fontWeight: activeLayer === idx ? 700 : 500,
                 fontFamily: 'monospace',
                 letterSpacing: '0.1em',
                 cursor: 'pointer',

@@ -3,7 +3,7 @@
 /* ==========================================================================
    SMART FIT RD — HIGH-PERFORMANCE INDUSTRIAL PRECISION DESIGN SYSTEM
    Tipografía: Archivo (Display) + Sora (Sans) + IBM Plex Mono (Technical)
-   Theme Mode: Contrast-Hybrid (Profundo Basalto #0A0B0E + Blanco Puro #FFFFFF + Rojo Smart Fit #FF1923 + Oro Deportivo #FFD200)
+   Theme Mode: Monocromático Negro/Blanco/Gris con Acento Amarillo Smart Fit (#FFC700)
    ========================================================================== */
 
 :root {
@@ -11,25 +11,32 @@
   --font-body: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
 
-  /* Theme Mode: Contrast-Hybrid */
+  /* Theme Mode: Black, White, Gray, Yellow */
   --bg-dark: #0A0B0E;
   --bg-dark-surface: #121419;
-  --bg-dark-elevated: #191B22;
-  --bg-light: #F6F6F8;
+  --bg-dark-elevated: #1A1C23;
+  --bg-light: #F4F5F7;
   --bg-white: #FFFFFF;
 
   --text-light: #FFFFFF;
-  --text-light-muted: rgba(255, 255, 255, 0.72);
-  --text-light-subtle: rgba(255, 255, 255, 0.45);
+  --text-light-muted: rgba(255, 255, 255, 0.75);
+  --text-light-subtle: rgba(255, 255, 255, 0.48);
 
-  --text-dark: #111215;
-  --text-dark-muted: #5E6068;
-  --text-dark-subtle: #8D909A;
+  --text-dark: #0D0E11;
+  --text-dark-muted: #4B4F58;
+  --text-dark-subtle: #767B87;
 
-  --accent-red: #FF1923;
-  --accent-red-hover: #D90F18;
-  --accent-red-subtle: rgba(255, 25, 35, 0.12);
-  --accent-gold: #FFD200;
+  /* Paleta: Blanco, Negro, Gris y Amarillo (#FFC700 / Hover #E5B200) */
+  --accent-yellow: #FFC700;
+  --accent-yellow-hover: #E5B200;
+  --accent-yellow-subtle: rgba(255, 199, 0, 0.12);
+  --accent-gold: #FFC700;
+
+  --gray-100: #F4F5F7;
+  --gray-200: #E5E7EB;
+  --gray-400: #9CA3AF;
+  --gray-600: #4B4F58;
+  --gray-800: #1F242D;
 
   --border-dark: rgba(255, 255, 255, 0.12);
   --border-dark-subtle: rgba(255, 255, 255, 0.06);
@@ -70,8 +77,8 @@ body {
 }
 
 ::selection {
-  background-color: var(--accent-red);
-  color: #FFFFFF;
+  background-color: var(--accent-yellow);
+  color: #0A0B0E;
 }
 
 img, picture, svg, video {
@@ -248,7 +255,8 @@ button {
 .border-black\/5 { border-color: rgba(0, 0, 0, 0.05); }
 .border-black\/10 { border-color: rgba(0, 0, 0, 0.1); }
 .border-l-4 { border-left-width: 4px; }
-.border-l-\[\#FF1923\] { border-left-color: var(--accent-red); }
+.border-l-\[\#FFC700\] { border-left-color: var(--accent-yellow); }
+.border-\[\#FFC700\] { border-color: var(--accent-yellow); }
 
 .bg-\[\#0A0B0E\] { background-color: #0A0B0E; }
 .bg-\[\#0A0B0E\]\/85 { background-color: rgba(10, 11, 14, 0.85); }
@@ -256,11 +264,14 @@ button {
 .bg-\[\#050608\] { background-color: #050608; }
 .bg-\[\#121419\] { background-color: #121419; }
 .bg-\[\#121419\]\/50 { background-color: rgba(18, 20, 25, 0.5); }
+.bg-\[\#1A1C23\] { background-color: #1A1C23; }
 .bg-\[\#FFFFFF\] { background-color: #FFFFFF; }
-.bg-\[\#F6F6F8\] { background-color: #F6F6F8; }
-.bg-\[\#F9F9FA\] { background-color: #F9F9FA; }
-.bg-\[\#FF1923\] { background-color: var(--accent-red); }
-.bg-\[\#FF1923\]\/10 { background-color: rgba(255, 25, 35, 0.1); }
+.bg-\[\#F4F5F7\] { background-color: #F4F5F7; }
+.bg-\[\#F6F6F8\] { background-color: #F4F5F7; }
+.bg-\[\#F9F9FA\] { background-color: #F4F5F7; }
+.bg-\[\#FFC700\] { background-color: var(--accent-yellow); }
+.bg-\[\#FFC700\]\/10 { background-color: rgba(255, 199, 0, 0.12); }
+.bg-\[\#FFC700\]\/20 { background-color: rgba(255, 199, 0, 0.2); }
 .bg-white\/5 { background-color: rgba(255, 255, 255, 0.05); }
 .bg-white\/10 { background-color: rgba(255, 255, 255, 0.1); }
 
@@ -270,10 +281,13 @@ button {
 .text-white\/60 { color: rgba(255, 255, 255, 0.6); }
 .text-white\/70 { color: rgba(255, 255, 255, 0.7); }
 .text-white\/80 { color: rgba(255, 255, 255, 0.8); }
-.text-\[\#111215\] { color: #111215; }
+.text-\[\#0A0B0E\] { color: #0A0B0E; }
+.text-\[\#111215\] { color: #0D0E11; }
 .text-\[\#5E6068\] { color: #5E6068; }
-.text-\[\#FF1923\] { color: var(--accent-red); }
-.text-\[\#FFD200\] { color: var(--accent-gold); }
+.text-\[\#4B4F58\] { color: #4B4F58; }
+.text-\[\#9CA3AF\] { color: #9CA3AF; }
+.text-\[\#FFC700\] { color: var(--accent-yellow); }
+.text-\[\#FFD200\] { color: var(--accent-yellow); }
 
 .font-black { font-weight: 900; }
 .font-bold { font-weight: 700; }
@@ -368,17 +382,20 @@ button {
 
 /* Hover States */
 @media (hover: hover) {
-  .hover\:bg-\[\#D90F18\]:hover { background-color: #D90F18; }
-  .hover\:bg-\[\#F9F9FA\]:hover { background-color: #F9F9FA; }
+  .hover\:bg-\[\#E5B200\]:hover { background-color: var(--accent-yellow-hover); }
+  .hover\:bg-\[\#FFC700\]:hover { background-color: var(--accent-yellow-hover); }
+  .hover\:bg-\[\#F9F9FA\]:hover { background-color: var(--bg-light); }
   .hover\:bg-white\/5:hover { background-color: rgba(255, 255, 255, 0.05); }
   .hover\:bg-white\/10:hover { background-color: rgba(255, 255, 255, 0.1); }
   .hover\:text-white:hover { color: #FFFFFF; }
-  .hover\:text-\[\#D90F18\]:hover { color: #D90F18; }
+  .hover\:text-\[\#E5B200\]:hover { color: var(--accent-yellow-hover); }
+  .hover\:text-\[\#FFC700\]:hover { color: var(--accent-yellow-hover); }
   .hover\:border-white:hover { border-color: #FFFFFF; }
+  .hover\:border-\[\#FFC700\]:hover { border-color: var(--accent-yellow); }
   .hover\:grayscale-0:hover { filter: grayscale(0%); }
-  .group:hover .group-hover\:border-\[\#FF1923\] { border-color: var(--accent-red); }
-  .group:hover .group-hover\:text-\[\#FF1923\] { color: var(--accent-red); }
-  .group:hover .group-hover\:text-\[\#D90F18\] { color: #D90F18; }
+  .group:hover .group-hover\:border-\[\#FFC700\] { border-color: var(--accent-yellow); }
+  .group:hover .group-hover\:text-\[\#FFC700\] { color: var(--accent-yellow); }
+  .group:hover .group-hover\:text-\[\#E5B200\] { color: var(--accent-yellow-hover); }
   .group:hover .group-hover\:translate-x-1 { transform: translateX(0.25rem); }
 }
 
@@ -405,7 +422,7 @@ button {
   background: rgba(255, 255, 255, 0.2);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-red);
+  background: var(--accent-yellow);
 }
 
 @media (prefers-reduced-motion: reduce) {
